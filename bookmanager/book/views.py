@@ -4,5 +4,7 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.http import HttpResponse
 def index(request):
+    context = {'name':'双十一啦'}
 
-    return HttpResponse('OK')
+    # return HttpResponse('OK')
+    return render(request,'book/index.html',context=context)
