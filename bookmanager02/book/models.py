@@ -31,6 +31,9 @@ class BookInfo(models.Model):
         db_table = 'bookinfo'  # 修改表的名字
         verbose_name = '书籍管理' 'admin站点使用的'
 
+    def __str__(self):
+        return self.name
+
 
 class PeopelInfo(models.Model):
 
@@ -64,3 +67,6 @@ class PeopelInfo(models.Model):
     class Meta:
         db_table='peopleinfo'
         verbose_name='人物管理'
+
+    def __str__(self):
+        return self.name
