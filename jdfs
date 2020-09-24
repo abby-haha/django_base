@@ -1,0 +1,59 @@
+[33mcommit 1c0cb968bcf36af42c28eb046f8c283c465da220[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: abby <350121189@qq.com>
+Date:   Wed Sep 23 19:48:02 2020 +0800
+
+    视图
+
+[33mcommit ff8aa38c4dafe19af8174f817d36e70b8868c85f[m
+Author: abby <350121189@qq.com>
+Date:   Wed Sep 23 19:28:53 2020 +0800
+
+    创建新工程bookmanager02及子程序
+
+[33mcommit 8585b0f3520f486bee4b6e738214fb70e28fad16[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: abby <350121189@qq.com>
+Date:   Wed Sep 23 18:01:09 2020 +0800
+
+    静态资源设置和访问
+
+[33mcommit 2ab1ef3b046141ba10ee2f697ae7761a4c763c77[m
+Author: abby <350121189@qq.com>
+Date:   Wed Sep 23 15:39:07 2020 +0800
+
+    模板
+
+[33mcommit 80fcb5cbab3080804934fb95188f4113162e0b05[m
+Author: abby <350121189@qq.com>
+Date:   Wed Sep 23 15:03:38 2020 +0800
+
+    添加路由index
+
+[33mcommit bcd400a222e3ad0c8ca860472ef156b919d9fcfd[m
+Author: abby <350121189@qq.com>
+Date:   Wed Sep 23 14:21:45 2020 +0800
+
+    定义视图index
+
+[33mcommit 4d066bcc18fba3ba5b89a7ae8f60f929832ffaf7[m
+Author: abby <350121189@qq.com>
+Date:   Wed Sep 23 13:36:59 2020 +0800
+
+    admin站点
+
+[33mcommit 9b22042fad887d66804b4485f2b5777aa211de0d[m
+Author: abby <350121189@qq.com>
+Date:   Wed Sep 23 12:08:29 2020 +0800
+
+    模型迁移（建表）
+
+[33mcommit fe933e229ef5aac34da0df6d7fbed8dbb471358b[m
+Author: abby <350121189@qq.com>
+Date:   Wed Sep 23 11:22:15 2020 +0800
+
+    创建子应用
+
+[33mcommit 4c33f8e4f3c3c86f96930f294e77c24d5e1242d2[m
+Author: abby <350121189@qq.com>
+Date:   Wed Sep 23 11:12:48 2020 +0800
+
+    创建工程
