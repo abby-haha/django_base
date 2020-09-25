@@ -6,10 +6,18 @@ def index(request):
     return HttpResponse('index')
 
 
-
+# http://127.0.0.1:8000/111/15627384920/?order=readcount&order=commentcount&gender=女
 def shop(request,aa,bb):
     post = request.POST
-    print(post)
+    print(post) # 表单请求
+    # <QueryDict: {'username': ['abby'], 'password': ['123']}>
+    req_str= request.GET
+    print(req_str)
+    # < QueryDict: {'order': ['readcount', 'commentcount'], 'gender': ['女']} >
+    print(req_str.get('order'))
+    # commentcount
+    print(req_str['gender'])
+    # 女
     return HttpResponse('shop')
 
 def register(request):
