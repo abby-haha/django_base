@@ -2,7 +2,7 @@ from django.urls import path
 
 from book.views import index, shop,register,req_json,method,redirect_url
 from book.views import set_cookies,get_cookies,response,response_json
-from book.views import set_get_cookies,set_session,get_session,del_session
+from book.views import set_get_cookies,set_session,get_session,del_session, LoginView
 
 
 ############################## 自定义路由转换器 ######################
@@ -39,5 +39,8 @@ urlpatterns = [
     path('set_session/',set_session),
     path('get_session/',get_session),
     path('del_session/',del_session),
+
+    ##################### 类视图 ###################
+    path('LoginView/', LoginView.as_view()),
 
 ]

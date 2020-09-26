@@ -1,8 +1,10 @@
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
-
 # Create your views here.
+from django.views import View
+
+
 def index(request):
     return HttpResponse('index')
 
@@ -53,6 +55,7 @@ def method(request):
     # GET
     return HttpResponse('method')
 
+
 ################################# 响应 #############################
 def response(request):
     # HttpResponse(content响应体,状态码）
@@ -65,27 +68,34 @@ def response(request):
     response.status_code = 200
     return response
 
+
 import json
+
+
 def response_json(request):
-    data= {'name':'abby','age':'11'}
-    data_json=json.dumps(data)  # json.dumps():dict --> json   json.loads():json-->dict
+    data = {'name': 'abby', 'age': '11'}
+    data_json = json.dumps(data)  # json.dumps():dict --> json   json.loads():json-->dict
     return HttpResponse(data_json)
     # return JsonResponse(data)
+
 
 ############################## 重定向 #################################
 def redirect_url(request):
     return redirect('http://www.baidu.com')
 
+
 ############################ cookies #############################
 def set_cookies(request):
-    response = HttpResponse('set_cookies') # 创建response对象
+    response = HttpResponse('set_cookies')  # 创建response对象
     response.set_cookie('name', '01')  # 对象.set_cookie
     return response
+
 
 def get_cookies(request):
     cookie = request.COOKIES.get('name')
     print(cookie)
     return HttpResponse('get_cookies')
+
 
 def set_get_cookies(request):
     cookie = request.COOKIES.get('name')
@@ -100,29 +110,41 @@ def set_get_cookies(request):
         # set_cookies(request)
         print(f'第一次访问的cookie：{request.COOKIES.get("name")}')
         response = HttpResponse('第一次访问，服务器返回了cookie')  # 创建response对象
-        response.set_cookie('name', '01',max_age=10)  # 对象.set_cookie
+        response.set_cookie('name', '01', max_age=10)  # 对象.set_cookie
         return response
+
 
 #######################  session ####################################3
 def set_session(request):
-    request.session['name']=request.GET.get('username')
-    request.session['pwd']=request.GET.get('password')
+    request.session['name'] = request.GET.get('username')
+    request.session['pwd'] = request.GET.get('password')
     print(request.session['name'])
     print(request.session['pwd'])
     return HttpResponse('set_session')
 
-def get_session(request):
-    username = request.session.get('name')
-    password = request.session.get('pwd')
-    print(username,password)
-    content = '{},{}'.format(username,password)
-    return HttpResponse(content)
 
-def del_session(request):
-    request.session.clear()  # key（即session_id 还在，但是值已经没有了，网页的cookie还在）
-    request.session.flush()  # 键和值都没了，直接删除记录，网页的cookie删除了
+def get_session(request):
     username = request.session.get('name')
     password = request.session.get('pwd')
     print(username, password)
     content = '{},{}'.format(username, password)
     return HttpResponse(content)
+
+
+def del_session(request):
+    request.session.clear()  # key（即session_id 还在，但是值已经没有了，网页的cookie还在）
+    # request.session.flush()  # 键和值都没了，直接删除记录，网页的cookie删除了
+    username = request.session.get('name')
+    password = request.session.get('pwd')
+    print(username, password)
+    content = '{},{}'.format(username, password)
+    return HttpResponse(content)
+
+
+########################## 类视图 ###################################
+class LoginView(View):
+    def get(self, request):
+        return HttpResponse('get get get')
+
+    def post(self, request):
+        return HttpResponse('post post post')
