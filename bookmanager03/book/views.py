@@ -53,21 +53,6 @@ def method(request):
     # GET
     return HttpResponse('method')
 
-
-############################ cookies #############################
-def set_cookies(request):
-    response = HttpResponse('set_cookies')
-    response.set_cookie('name', 'username')
-
-    return response
-
-
-def get_cookies(request):
-    request = request.COOKIES.get('name')
-    print(request)
-    return HttpResponse('get_cookies')
-
-
 ################################# 响应 #############################
 def response(request):
     # HttpResponse(content响应体,状态码）
@@ -90,4 +75,31 @@ def response_json(request):
 ############################## 重定向 #################################
 def redirect_url(request):
     return redirect('http://www.baidu.com')
+
+############################ cookies #############################
+def set_cookies(request):
+    response = HttpResponse('set_cookies') # 创建response对象
+    response.set_cookie('name', '01')  # 对象.set_cookie
+    return response
+
+def get_cookies(request):
+    cookie = request.COOKIES.get('name')
+    print(cookie)
+    return HttpResponse('get_cookies')
+
+def set_get_cookies(request):
+    cookie = request.COOKIES.get('name')
+    if cookie:
+        print(f'删除前：{cookie}')
+        response = HttpResponse('已经访问过了')
+        response.delete_cookie('name')
+
+        print(f'删除后：{request.COOKIES.get("name")}')
+        return response
+    else:
+        # set_cookies(request)
+        print(f'第一次访问的cookie：{request.COOKIES.get("name")}')
+        response = HttpResponse('第一次访问，服务器返回了cookie')  # 创建response对象
+        response.set_cookie('name', '01',max_age=10)  # 对象.set_cookie
+        return response
 
