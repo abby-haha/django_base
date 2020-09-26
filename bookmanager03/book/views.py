@@ -103,3 +103,26 @@ def set_get_cookies(request):
         response.set_cookie('name', '01',max_age=10)  # 对象.set_cookie
         return response
 
+#######################  session ####################################3
+def set_session(request):
+    request.session['name']=request.GET.get('username')
+    request.session['pwd']=request.GET.get('password')
+    print(request.session['name'])
+    print(request.session['pwd'])
+    return HttpResponse('set_session')
+
+def get_session(request):
+    username = request.session.get('name')
+    password = request.session.get('pwd')
+    print(username,password)
+    content = '{},{}'.format(username,password)
+    return HttpResponse(content)
+
+def del_session(request):
+    request.session.clear()  # key（即session_id 还在，但是值已经没有了，网页的cookie还在）
+    request.session.flush()  # 键和值都没了，直接删除记录，网页的cookie删除了
+    username = request.session.get('name')
+    password = request.session.get('pwd')
+    print(username, password)
+    content = '{},{}'.format(username, password)
+    return HttpResponse(content)
