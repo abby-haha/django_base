@@ -1,6 +1,6 @@
 from django.urls import path
 
-from book.views import index, shop,register,req_json,method
+from book.views import index, shop,register,req_json,method,redirect_url
 from book.views import set_cookies,get_cookies,response,response_json
 
 
@@ -33,5 +33,6 @@ urlpatterns = [
     path('get_cookies/',get_cookies),
     path('res/',response),
     path('res_json/',response_json),
+    path('redirect_url/',redirect_url),
 
 ]

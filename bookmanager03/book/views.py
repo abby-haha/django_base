@@ -1,5 +1,5 @@
 from django.http import HttpResponse,JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 # Create your views here.
@@ -87,5 +87,7 @@ def response_json(request):
     return HttpResponse(data_json)
     # return JsonResponse(data)
 
-##############################
+############################## 重定向 #################################
+def redirect_url(request):
+    return redirect('http://www.baidu.com')
 
