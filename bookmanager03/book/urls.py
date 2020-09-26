@@ -1,7 +1,7 @@
 from django.urls import path
 
-from book.views import index, shop,register,json,method
-from book.views import set_cookies,get_cookies
+from book.views import index, shop,register,req_json,method
+from book.views import set_cookies,get_cookies,response,response_json
 
 
 ############################## 自定义路由转换器 ######################
@@ -27,9 +27,11 @@ urlpatterns = [
     path('index/',index),
     path('<int:aa>/<phone:bb>/',shop),
     path('register/',register),
-    path('json/',json),
+    path('req_json/',req_json),
     path('method/',method),
     path('set_cookies/',set_cookies),
     path('get_cookies/',get_cookies),
+    path('res/',response),
+    path('res_json/',response_json),
 
 ]
