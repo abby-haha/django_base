@@ -3,6 +3,7 @@ from django.urls import path
 from book.views import index, shop,register,req_json,method,redirect_url
 from book.views import set_cookies,get_cookies,response,response_json
 from book.views import set_get_cookies,set_session,get_session,del_session, LoginView
+from book.views import OrderView
 
 
 ############################## 自定义路由转换器 ######################
@@ -42,5 +43,8 @@ urlpatterns = [
 
     ##################### 类视图 ###################
     path('LoginView/', LoginView.as_view()),
+
+    ##################### 类视图多继承 #################
+    path('Order/', OrderView.as_view()),
 
 ]

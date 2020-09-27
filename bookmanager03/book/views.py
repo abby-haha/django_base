@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
@@ -142,9 +143,33 @@ def del_session(request):
 
 
 ########################## 类视图 ###################################
+
 class LoginView(View):
     def get(self, request):
         return HttpResponse('get get get')
 
     def post(self, request):
         return HttpResponse('post post post')
+
+
+########################### 类视图的多继承 ############################
+"""
+我的订单、个人中心页面
+如果登录用户 可以访问
+如果未登录用户 不应该访问，应该跳转到登录页面
+
+定义一个订单、个人中心 类视图
+
+如果定义我有没有登录呢？？？ 我们以登录 后台站点为例
+"""
+
+
+class OrderView(LoginRequiredMixin,View):
+    # as_view()里返回的是view函数
+    # view函数返回的是self.dispatch()
+    # 由于OrderView里没有重写dispatch函数，所以按照__mor__顺序调用父类的dispatch函数
+    def get(self, request):
+        return HttpResponse('已登录，get页面信息')
+
+    def post(self, request):
+        return HttpResponse('已登录，post页面信息')
