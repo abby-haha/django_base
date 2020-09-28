@@ -8,7 +8,10 @@ class BookInfo(models.Model):
 
     class Meta:
         db_table='bookinfo'
-        verbose_name='書籍管理'
+
+
+    def __str__(self):
+        return self.name
 
 # 人物列表信息模型
 class PeopleInfo(models.Model):
@@ -18,4 +21,7 @@ class PeopleInfo(models.Model):
 
     class Meta:
         db_table = 'peopleinfo'
-        verbose_name = '人物管理'
+
+
+    def __str__(self):
+        return self.name
