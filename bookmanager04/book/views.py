@@ -1,3 +1,4 @@
+from MySQLdb.constants.FIELD_TYPE import JSON
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -49,3 +50,22 @@ def header_data(request):
     print(response2)
     print(type(response2))
     return HttpResponse('header_data')
+
+# cookie
+def set_get_cookies(request):
+    # 如果第一次访问，设置cookie信息返回给浏览器
+    get_cookie_name= request.COOKIES
+    print(get_cookie_name)
+    if not get_cookie_name:
+        # cookie信息根据url中的字符串查询信息返回
+        # cookie的格式：name=<username>,age=<age>
+        username=request.GET.get('username')
+        response = HttpResponse('第一次访问')
+        response.set_cookie('name',username,max_age=2)
+        return response
+    else:
+
+        response=f'非第一次访问，COOKIE为：{get_cookie_name}'
+    # 如果已经访问过了，则返回浏览器响应的cookie信息打印在页面
+        return HttpResponse(response)
+
